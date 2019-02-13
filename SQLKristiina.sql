@@ -18,7 +18,7 @@ SELECT
     AVG(flights.ArrDelay) AS Arrival_Delay
 FROM
     flights
-        JOIN
+        LEFT JOIN
     usairports ON flights.Origin = usairports.IATA
 GROUP BY flights.Origin ASC , flights.colYear ASC , flights.colMonth ASC;
 
@@ -34,7 +34,8 @@ FROM Flights
 GROUP BY UniqueCarrier
 ORDER BY SUM(Distance) DESC LIMIT 10;
 
-SELECT UniqueCarrier, AVG(ArrDelay)FROM flights WHERE ArrDelay >=10
-GROUP BY UniqueCarrier 
-ORDER BY AVG(ArrDelay) ASC;
+SELECT UniqueCarrier, AVG(ArrDelay)FROM flights 
+GROUP BY ArrDelay 
+HAVING(ArrDelay) >=10
+ORDER BY(ArrDelay) ASC;
 
